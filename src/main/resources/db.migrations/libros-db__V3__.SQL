@@ -1,0 +1,29 @@
+CREATE TABLE Libros
+(
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	titulo VARCHAR(255),
+	descripcion VARCHAR(255),
+	autor_id BIGINT,
+	PRIMARY KEY (id),
+	KEY (autor_id)
+) 
+;
+
+
+CREATE TABLE Autores
+(
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(255),
+	PRIMARY KEY (id),
+	UNIQUE UQ_Autores_id(id)
+) 
+;
+
+
+
+
+
+ALTER TABLE Libros ADD CONSTRAINT FK_Libros_Autores 
+	FOREIGN KEY (autor_id) REFERENCES Autores (id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
